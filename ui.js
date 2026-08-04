@@ -36,7 +36,61 @@ const UI = {
 
         document
             .getElementById("startBtn")
-            .onclick = App.startQuiz;
+            .onclick = () => App.startQuiz();
+
+    },
+
+    quiz(question, index, total) {
+
+        this.app.innerHTML = `
+            <div class="container">
+
+                <h1>🇬🇧 Phrasal Verbs Master</h1>
+
+                <div class="card">
+
+                    <div class="progress">
+
+                        Question ${index + 1} / ${total}
+
+                    </div>
+
+                    <div class="question">
+
+                        ${question.question}
+
+                    </div>
+
+                    <div id="answers"></div>
+
+                    <div id="result"></div>
+
+                    <button id="nextButton" style="display:none">
+
+                        Next →
+
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        const answers = document.getElementById("answers");
+
+        question.answers.forEach((answer, i) => {
+
+            const button = document.createElement("button");
+
+            button.className = "answer";
+
+            button.textContent = answer.text;
+
+            button.onclick = () => App.answer(i);
+
+            answers.appendChild(button);
+
+        });
 
     }
 
