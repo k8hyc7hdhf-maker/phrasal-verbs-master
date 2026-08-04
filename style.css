@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Arial, sans-serif;
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+
+#progress {
+  text-align: center;
+  color: #6b7280;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+#question {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 28px;
+}
+
+.answer {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+  background: #f3f4f6;
+  text-align: left;
+  font-size: 17px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.answer:active {
+  transform: scale(.98);
+}
+
+.answer:hover {
+  background: #e5e7eb;
+}
+
+.correct {
+  background: #22c55e !important;
+  color: white;
+}
+
+.wrong {
+  background: #ef4444 !important;
+  color: white;
+}
+
+#explanation {
+  display: none;
+  margin-top: 20px;
+  padding: 18px;
+  background: #eff6ff;
+  border-radius: 16px;
+  line-height: 1.6;
+}
+
+#nextButton {
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+  padding: 18px;
+  border: none;
+  border-radius: 18px;
+  background: #2563eb;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#nextButton:active {
+  transform: scale(.98);
+}

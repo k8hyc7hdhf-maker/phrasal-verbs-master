@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Из-за сильного дождя организаторы решили отменить концерт.",
+    "hint": "Think about cancelling an event.",
+    "correct": 0,
+    "answers": [
+      {
+        "text": "The organizers decided to call off the concert because of the heavy rain.",
+        "meaning": "call off = cancel",
+        "correct": true
+      },
+      {
+        "text": "The organizers decided to put up with the concert because of the heavy rain.",
+        "meaning": "put up with = tolerate",
+        "correct": false
+      },
+      {
+        "text": "The organizers decided to come across the concert because of the heavy rain.",
+        "meaning": "come across = find by chance",
+        "correct": false
+      },
+      {
+        "text": "The organizers decided to look forward to the concert because of the heavy rain.",
+        "meaning": "look forward to = anticipate",
+        "correct": false
+      }
+    ]
+  },
+
+  {
+    "question": "Я больше не могу терпеть его грубое поведение.",
+    "hint": "Think about tolerance.",
+    "correct": 1,
+    "answers": [
+      {
+        "text": "I can't run out of his rude behavior anymore.",
+        "meaning": "run out of = have no more",
+        "correct": false
+      },
+      {
+        "text": "I can't put up with his rude behavior anymore.",
+        "meaning": "put up with = tolerate",
+        "correct": true
+      },
+      {
+        "text": "I can't bring about his rude behavior anymore.",
+        "meaning": "bring about = cause",
+        "correct": false
+      },
+      {
+        "text": "I can't make up for his rude behavior anymore.",
+        "meaning": "make up for = compensate",
+        "correct": false
+      }
+    ]
+  }
+]
