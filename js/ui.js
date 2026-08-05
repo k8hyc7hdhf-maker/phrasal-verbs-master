@@ -41,6 +41,13 @@ const UI = {
         document
             .getElementById("startBtn")
             .onclick = () => App.startQuiz();
+document
+    .getElementById("databaseBtn")
+    .onclick = () => {
+
+        alert("Database Builder is coming in Version 4.0 🚀");
+
+    };
 
     },
 
