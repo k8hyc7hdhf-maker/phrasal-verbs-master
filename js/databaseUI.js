@@ -34,13 +34,23 @@ const DatabaseUI = {
 
         html += `
 
-                <button
-                    class="answer"
-                    id="backHome">
+               <button class="answer" id="exportBtn">
+📤 Export JSON
+</button>
 
-                    ⬅ Back
+<button class="answer" id="importBtn">
+📥 Import JSON
+</button>
 
-                </button>
+<input
+    type="file"
+    id="importFile"
+    accept=".json"
+    style="display:none">
+
+<button class="answer" id="backHome">
+⬅ Back
+</button>
 
             </div>
 
@@ -57,6 +67,38 @@ const DatabaseUI = {
             .getElementById("addVerb")
             .onclick = () => this.showAddForm();
 
+document
+    .getElementById("exportBtn")
+    .onclick = () => {
+
+        Database.exportJSON();
+
+    };
+
+document
+    .getElementById("importBtn")
+    .onclick = () => {
+
+        document
+            .getElementById("importFile")
+            .click();
+
+    };
+
+document
+    .getElementById("importFile")
+    .onchange = (event) => {
+
+        const file = event.target.files[0];
+
+        if (file) {
+
+            Database.importJSON(file);
+
+        }
+
+    };
+    
     },
 
     showAddForm() {
