@@ -2,25 +2,27 @@
   {
     "id": 1,
     "verb": "call off",
-    "meaning": "cancel",
-    "level": "A2",
-    "distractors": [
-      "put up with",
-      "come across",
-      "bring about"
-    ],
-    "contexts": [
-      "Из-за сильного дождя организаторы решили отменить концерт.",
-      "Матч пришлось отменить из-за снега.",
-      "Мы решили отменить встречу.",
-      "Компания отменила мероприятие."
-    ],
-    "example": "The organizers called off the concert because of the heavy rain."
-  },
-  {
-    "id": 2,
-    "verb": "put up with",
-    "meaning": "tolerate",
+"meaning_en": "cancel",
+"meaning_ru": "отменить",
+   "level": "A2",
+   "distractors": [
+     "put up with",
+     "come across",
+     "bring about"
+   ],
+   "contexts": [
+     "Из-за сильного дождя организаторы решили отменить концерт.",
+     "Матч пришлось отменить из-за снега.",
+     "Мы решили отменить встречу.",
+     "Компания отменила мероприятие."
+   ],
+   "example": "The organizers called off the concert because of the heavy rain."
+ },
+ {
+   "id": 2,
+   "verb": "put up with",
+  "meaning_en": "tolerate",
+"meaning_ru": "ладить",
     "level": "A2",
     "distractors": [
       "run out of",
@@ -37,7 +39,8 @@
   {
     "id": 3,
     "verb": "come across",
-    "meaning": "find by chance",
+    "meaning_en": "find by chance", 
+    "meaning_ru": "вструтить",
     "level": "A2",
     "distractors": [
       "call off",
@@ -49,5 +52,23 @@
       "Она случайно наткнулась на интересную статью."
     ],
     "example": "I came across an old photo yesterday."
+  },
+  {
+    "verb": "wake up",
+    "meaning_en": "wake uup",
+    "meaning_ru": "просыпаться",
+    "level": "A2",
+    "contexts": [],
+    "examples": [],
+    "id": 1785914681062
+  },
+  {
+    "verb": "get up",
+    "meaning_en": "get upp",
+    "meaning_ru": "вставать",
+    "level": "A2",
+    "contexts": [],
+    "examples": [],
+    "id": 1785914796540
   }
 ]
