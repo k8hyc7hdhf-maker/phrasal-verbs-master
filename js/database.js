@@ -4,6 +4,12 @@ const Database = {
 
     async load() {
 
+        // Сначала пробуем загрузить из localStorage
+        if (this.loadLocal()) {
+            return;
+        }
+
+        // Если нет -- загружаем из JSON
         const response = await fetch("data/phrasal_verbs.json");
 
         this.verbs = await response.json();
@@ -22,6 +28,8 @@ const Database = {
 
         this.verbs.push(verb);
 
+        this.save();
+
     },
 
     update(id, newVerb) {
@@ -30,7 +38,11 @@ const Database = {
 
         if (index !== -1) {
 
+            newVerb.id = id;
+
             this.verbs[index] = newVerb;
+
+            this.save();
 
         }
 
@@ -39,6 +51,43 @@ const Database = {
     delete(id) {
 
         this.verbs = this.verbs.filter(v => v.id !== id);
+
+        this.save();
+
+    },
+
+    save() {
+
+        localStorage.setItem(
+            "phrasalDatabase",
+            JSON.stringify(this.verbs)
+        );
+
+    },
+
+    loadLocal() {
+
+        const data = localStorage.getItem(
+            "phrasalDatabase"
+        );
+
+        if (data) {
+
+            this.verbs = JSON.parse(data);
+
+            return true;
+
+        }
+
+        return false;
+
+    },
+
+    clearLocal() {
+
+        localStorage.removeItem(
+            "phrasalDatabase"
+        );
 
     }
 

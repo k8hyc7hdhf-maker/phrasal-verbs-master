@@ -13,12 +13,8 @@ const DatabaseUI = {
 
                 <h2>📚 Total verbs: ${verbs.length}</h2>
 
-                <button
-                    class="answer"
-                    id="addVerb">
-
+                <button class="answer" id="addVerb">
                     ➕ Add New Verb
-
                 </button>
 
                 <hr>
@@ -29,13 +25,9 @@ const DatabaseUI = {
         verbs.forEach(verb => {
 
             html += `
-
                 <button class="answer">
-
                     ${verb.verb}
-
                 </button>
-
             `;
 
         });
@@ -63,11 +55,87 @@ const DatabaseUI = {
 
         document
             .getElementById("addVerb")
-            .onclick = () => {
+            .onclick = () => this.showAddForm();
 
-                alert("Coming in next step 😊");
+    },
 
-            };
+    showAddForm() {
+
+        UI.app.innerHTML = `
+
+        <div class="container">
+
+            <h1>➕ New Phrasal Verb</h1>
+
+            <div class="card">
+
+                <input
+                    id="verb"
+                    placeholder="Verb">
+
+                <input
+                    id="meaningEn"
+                    placeholder="Meaning (EN)">
+
+                <input
+                    id="meaningRu"
+                    placeholder="Meaning (RU)">
+
+                <input
+                    id="level"
+                    placeholder="Level (A2/B1/B2)"
+                    value="A2">
+
+                <button
+                    class="answer"
+                    id="save">
+
+                    💾 Save
+
+                </button>
+
+                <button
+                    class="answer"
+                    id="cancel">
+
+                    ⬅ Cancel
+
+                </button>
+
+            </div>
+
+        </div>
+        `;
+
+        document
+            .getElementById("cancel")
+            .onclick = () => this.show();
+
+        document
+            .getElementById("save")
+            .onclick = () => this.saveVerb();
+
+    },
+
+    saveVerb() {
+
+        Database.add({
+
+            verb: document.getElementById("verb").value,
+
+            meaning_en: document.getElementById("meaningEn").value,
+
+            meaning_ru: document.getElementById("meaningRu").value,
+
+            level: document.getElementById("level").value,
+
+            contexts: [],
+
+            examples: []
+
+        });
+
+        this.show();
 
     }
 
