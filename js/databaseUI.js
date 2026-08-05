@@ -24,13 +24,17 @@ const DatabaseUI = {
 
         verbs.forEach(verb => {
 
-            html += `
-                <button class="answer">
-                    ${verb.verb}
-                </button>
-            `;
+    html += `
+        <button
+            class="answer editVerb"
+            data-id="${verb.id}">
 
-        });
+            ${verb.verb}
+
+        </button>
+    `;
+
+});
 
         html += `
 
@@ -60,6 +64,20 @@ const DatabaseUI = {
         `;
 
         UI.app.innerHTML = html;
+        
+        document
+    .querySelectorAll(".editVerb")
+    .forEach(button => {
+
+        button.onclick = () => {
+
+            const id = Number(button.dataset.id);
+
+            this.showEditForm(id);
+
+        };
+
+    });
 
         // Back
         document
@@ -186,5 +204,110 @@ const DatabaseUI = {
         this.show();
 
     }
+
+,
+
+showEditForm(id) {
+
+    const verb = Database.getAll().find(v => v.id === id);
+
+    if (!verb) return;
+
+    UI.app.innerHTML = `
+
+    <div class="container">
+
+        <h1>✏ Edit Phrasal Verb</h1>
+
+        <div class="card">
+
+            <input
+                id="verb"
+                value="${verb.verb}">
+
+            <input
+                id="meaningEn"
+                value="${verb.meaning_en}">
+
+            <input
+                id="meaningRu"
+                value="${verb.meaning_ru}">
+
+            <input
+                id="level"
+                value="${verb.level}">
+
+            <button
+                class="answer"
+                id="saveEdit">
+
+                💾 Save Changes
+
+            </button>
+
+            <button
+                class="answer"
+                id="deleteVerb">
+
+                🗑 Delete
+
+            </button>
+
+            <button
+                class="answer"
+                id="cancel">
+
+                ⬅ Back
+
+            </button>
+
+        </div>
+
+    </div>
+    `;
+
+    document
+        .getElementById("cancel")
+        .onclick = () => this.show();
+
+    document
+        .getElementById("deleteVerb")
+        .onclick = () => {
+
+            if (confirm("Delete this phrasal verb?")) {
+
+                Database.delete(id);
+
+                this.show();
+
+            }
+
+        };
+
+    document
+        .getElementById("saveEdit")
+        .onclick = () => {
+
+            Database.update(id, {
+
+                verb: document.getElementById("verb").value,
+
+                meaning_en: document.getElementById("meaningEn").value,
+
+                meaning_ru: document.getElementById("meaningRu").value,
+
+                level: document.getElementById("level").value,
+
+                contexts: verb.contexts,
+
+                examples: verb.examples
+
+            });
+
+            this.show();
+
+        };
+
+}
 
 };
