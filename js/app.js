@@ -2,9 +2,21 @@ const App = {
 
     async init() {
 
-        await Quiz.load();
+        try {
 
-        UI.home();
+            await Quiz.load();
+
+            UI.home();
+
+        } catch (error) {
+
+            document.body.innerHTML = `
+<pre style="color:red;padding:20px;white-space:pre-wrap;">
+${error.stack}
+</pre>
+            `;
+
+        }
 
     },
 
