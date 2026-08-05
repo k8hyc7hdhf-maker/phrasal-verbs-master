@@ -34,23 +34,25 @@ const DatabaseUI = {
 
         html += `
 
-               <button class="answer" id="exportBtn">
-📤 Export JSON
-</button>
+                <hr>
 
-<button class="answer" id="importBtn">
-📥 Import JSON
-</button>
+                <button class="answer" id="exportBtn">
+                    📤 Export JSON
+                </button>
 
-<input
-    type="file"
-    id="importFile"
-    accept=".json"
-    style="display:none">
+                <button class="answer" id="importBtn">
+                    📥 Import JSON
+                </button>
 
-<button class="answer" id="backHome">
-⬅ Back
-</button>
+                <input
+                    type="file"
+                    id="importFile"
+                    accept=".json"
+                    style="display:none">
+
+                <button class="answer" id="backHome">
+                    ⬅ Back
+                </button>
 
             </div>
 
@@ -59,46 +61,50 @@ const DatabaseUI = {
 
         UI.app.innerHTML = html;
 
+        // Back
         document
             .getElementById("backHome")
             .onclick = () => UI.home();
 
+        // Add
         document
             .getElementById("addVerb")
             .onclick = () => this.showAddForm();
 
-document
-    .getElementById("exportBtn")
-    .onclick = () => {
+        // Export
+        document
+            .getElementById("exportBtn")
+            .onclick = () => {
 
-        Database.exportJSON();
+                Database.exportJSON();
 
-    };
+            };
 
-document
-    .getElementById("importBtn")
-    .onclick = () => {
+        // Import
+        document
+            .getElementById("importBtn")
+            .onclick = () => {
+
+                document
+                    .getElementById("importFile")
+                    .click();
+
+            };
 
         document
             .getElementById("importFile")
-            .click();
+            .onchange = (event) => {
 
-    };
+                const file = event.target.files[0];
 
-document
-    .getElementById("importFile")
-    .onchange = (event) => {
+                if (file) {
 
-        const file = event.target.files[0];
+                    Database.importJSON(file);
 
-        if (file) {
+                }
 
-            Database.importJSON(file);
+            };
 
-        }
-
-    };
-    
     },
 
     showAddForm() {
