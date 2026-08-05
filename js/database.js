@@ -89,7 +89,7 @@ const Database = {
             "phrasalDatabase"
         );
 
-    }
+    },
     
     exportJSON() {
 
@@ -102,15 +102,7 @@ const Database = {
 
     const url = URL.createObjectURL(blob);
 
-    const a = document.createElement("a");
-
-    a.href = url;
-
-    a.download = "phrasal_verbs.json";
-
-    a.click();
-
-    URL.revokeObjectURL(url);
+    window.open(url);
 
 },
 
