@@ -57,9 +57,15 @@ const UI = {
 
                     <div class="question">
 
-                        ${question.question}
+    ${question.question}
 
-                    </div>
+</div>
+
+<button id="speakButton" class="answer">
+
+🔊 Listen
+
+</button>
 
                     <div id="answers"></div>
 
@@ -91,6 +97,16 @@ const UI = {
             answers.appendChild(button);
 
         });
+        
+        document
+    .getElementById("speakButton")
+    .onclick = () => {
+
+        Audio.speak(
+            question.answers[question.correct].text
+        );
+
+    };
 
     }
 
