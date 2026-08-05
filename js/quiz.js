@@ -6,7 +6,7 @@ const Quiz = {
 
     async load() {
 
-        const response = await fetch("questions.json");
+        const response = await fetch("data/questions.json");
 
         this.questions = await response.json();
 
