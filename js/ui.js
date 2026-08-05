@@ -41,11 +41,12 @@ const UI = {
         document
             .getElementById("startBtn")
             .onclick = () => App.startQuiz();
-document
+
+  document
     .getElementById("databaseBtn")
     .onclick = () => {
 
-        alert("Database Builder is coming in Version 4.0 🚀");
+        DatabaseUI.show();
 
     };
 
