@@ -21,6 +21,10 @@ const UI = {
                         ⭐ Favorites
                     </button>
 
+<button class="answer" id="databaseBtn">
+    🛠 Database Builder
+</button>
+
                     <button class="answer">
                         📊 Statistics
                     </button>
