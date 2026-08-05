@@ -4,11 +4,11 @@ const QuestionGenerator = {
 
     async load() {
 
-        const response = await fetch("data/phrasal_verbs.json");
+    await Database.load();
 
-        this.verbs = await response.json();
+    this.verbs = Database.getAll();
 
-    },
+},
 
     randomItem(array) {
 
@@ -16,56 +16,61 @@ const QuestionGenerator = {
 
     },
 
-    findVerb(name) {
+    shuffle(array) {
 
-        return this.verbs.find(v => v.verb === name);
+        return [...array].sort(() => Math.random() - 0.5);
 
     },
 
     generate() {
 
-        const verb = this.randomItem(this.verbs);
+        const correctVerb = this.randomItem(this.verbs);
 
-        const context = this.randomItem(verb.contexts);
+        const context = this.randomItem(correctVerb.contexts);
 
-        const options = [];
+        // Все остальные глаголы
+        const wrongVerbs = this.verbs.filter(
+            v => v.id !== correctVerb.id
+        );
 
-        // Правильный ответ
-        options.push({
-            text: verb.example,
-            meaning: `${verb.verb} = ${verb.meaning}`,
-            correct: true
-        });
+        // Берём три случайных
+        const wrongAnswers = this
+            .shuffle(wrongVerbs)
+            .slice(0, 3);
 
-        // Неправильные ответы
-        verb.distractors.forEach(name => {
+        const answers = [
 
-            const wrongVerb = this.findVerb(name);
+            {
+                text: correctVerb.example,
+                meaning: `${correctVerb.verb} = ${correctVerb.meaning}`,
+                correct: true
+            }
 
-            if (!wrongVerb) return;
+        ];
 
-            options.push({
-                text: wrongVerb.example,
-                meaning: `${wrongVerb.verb} = ${wrongVerb.meaning}`,
+        wrongAnswers.forEach(v => {
+
+            answers.push({
+
+                text: v.example,
+                meaning: `${v.verb} = ${v.meaning}`,
                 correct: false
+
             });
 
         });
 
-        // Перемешиваем варианты ответов
-        options.sort(() => Math.random() - 0.5);
-
-        const correctIndex = options.findIndex(o => o.correct);
+        const shuffled = this.shuffle(answers);
 
         return {
 
             question: context,
 
-            hint: `Think about "${verb.meaning}".`,
+            hint: `Think about "${correctVerb.meaning}".`,
 
-            answers: options,
+            answers: shuffled,
 
-            correct: correctIndex
+            correct: shuffled.findIndex(a => a.correct)
 
         };
 
