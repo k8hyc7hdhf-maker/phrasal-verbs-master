@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "verb": "call off",
+    "meaning": "cancel",
+    "level": "A2",
+    "distractors": [
+      "put up with",
+      "come across",
+      "bring about"
+    ],
+    "contexts": [
+      "Из-за сильного дождя организаторы решили отменить концерт.",
+      "Матч пришлось отменить из-за снега.",
+      "Мы решили отменить встречу.",
+      "Компания отменила мероприятие."
+    ],
+    "example": "The organizers called off the concert because of the heavy rain."
+  },
+  {
+    "id": 2,
+    "verb": "put up with",
+    "meaning": "tolerate",
+    "level": "A2",
+    "distractors": [
+      "run out of",
+      "bring about",
+      "make up for"
+    ],
+    "contexts": [
+      "Я больше не могу терпеть его грубое поведение.",
+      "Она устала терпеть постоянный шум.",
+      "Мы не должны мириться с таким отношением."
+    ],
+    "example": "I can't put up with his rude behavior anymore."
+  },
+  {
+    "id": 3,
+    "verb": "come across",
+    "meaning": "find by chance",
+    "level": "A2",
+    "distractors": [
+      "call off",
+      "turn out",
+      "look forward to"
+    ],
+    "contexts": [
+      "Я случайно нашёл старую фотографию.",
+      "Она случайно наткнулась на интересную статью."
+    ],
+    "example": "I came across an old photo yesterday."
+  }
+]

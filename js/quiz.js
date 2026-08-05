@@ -4,11 +4,34 @@ const Quiz = {
     current: 0,
     score: 0,
 
+    // true = использовать генератор
+    // false = использовать questions.json
+    useGenerator: true,
+
     async load() {
 
-        const response = await fetch("data/questions.json");
+        if (this.useGenerator) {
 
-        this.questions = await response.json();
+            await QuestionGenerator.load();
+
+            this.questions = [];
+
+            // Пока создаём 20 вопросов
+            for (let i = 0; i < 20; i++) {
+
+                this.questions.push(
+                    QuestionGenerator.generate()
+                );
+
+            }
+
+        } else {
+
+            const response = await fetch("data/questions.json");
+
+            this.questions = await response.json();
+
+        }
 
     },
 
@@ -49,7 +72,6 @@ const Quiz = {
     restart() {
 
         this.current = 0;
-
         this.score = 0;
 
     }
